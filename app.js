@@ -2297,6 +2297,14 @@ class PixelEditor {
         this.moveLassoBtn = document.getElementById('moveLassoBtn');
         this.cutLassoBtn = document.getElementById('cutLassoBtn');
         this.cancelLassoBtn = document.getElementById('cancelLassoBtn');
+        
+        // Symmetry elements
+        this.symmetryBtn = document.getElementById('symmetryBtn');
+        this.symmetryControlsSection = document.getElementById('symmetryControlsSection');
+        this.symmetryHBtn = document.getElementById('symmetryHBtn');
+        this.symmetryVBtn = document.getElementById('symmetryVBtn');
+        this.symmetryBothBtn = document.getElementById('symmetryBothBtn');
+        this.symmetryOffBtn = document.getElementById('symmetryOffBtn');
     }
 
     initState() {
@@ -2336,6 +2344,9 @@ class PixelEditor {
         this.lassoDragging = false;
         this.lassoDragStart = null;
         this.lassoContentPos = null;
+        
+        // Symmetry state
+        this.symmetryMode = 'off'; // 'off', 'horizontal', 'vertical', 'both'
     }
 
     attachEventListeners() {
@@ -2433,6 +2444,9 @@ class PixelEditor {
         document.getElementById('saveDrawingBtn').addEventListener('click', () => this.save());
         document.getElementById('cancelDrawingBtn').addEventListener('click', () => this.close());
         
+        // Resize
+        document.getElementById('resizeImageBtn').addEventListener('click', () => this.openResizeModal());
+        
         // Crop controls
         this.applyCropBtn.addEventListener('click', () => this.confirmCrop());
         this.cancelCropBtn.addEventListener('click', () => this.exitCropMode());
@@ -2441,6 +2455,13 @@ class PixelEditor {
         this.moveLassoBtn.addEventListener('click', () => this.moveLassoContent());
         this.cutLassoBtn.addEventListener('click', () => this.cutLassoContent());
         this.cancelLassoBtn.addEventListener('click', () => this.exitLassoMode());
+        
+        // Symmetry controls
+        this.symmetryBtn.addEventListener('click', () => this.toggleSymmetryControls());
+        this.symmetryHBtn.addEventListener('click', () => this.setSymmetryMode('horizontal'));
+        this.symmetryVBtn.addEventListener('click', () => this.setSymmetryMode('vertical'));
+        this.symmetryBothBtn.addEventListener('click', () => this.setSymmetryMode('both'));
+        this.symmetryOffBtn.addEventListener('click', () => this.setSymmetryMode('off'));
     }
 
     loadImage(imageData) {
@@ -2788,6 +2809,14 @@ class PixelEditor {
         layer.ctx.fillStyle = color;
         layer.ctx.fillRect(x, y, 1, 1);
         
+        // Apply symmetry
+        this.applySymmetry(x, y, (sx, sy) => {
+            if (sx >= 0 && sy >= 0 && sx < this.canvas.width && sy < this.canvas.height) {
+                layer.ctx.fillStyle = color;
+                layer.ctx.fillRect(sx, sy, 1, 1);
+            }
+        });
+        
         this.composeLayers();
         this.updatePreview();
     }
@@ -2797,6 +2826,13 @@ class PixelEditor {
         
         const layer = this.layers[this.currentLayerIndex];
         layer.ctx.clearRect(x, y, 1, 1);
+        
+        // Apply symmetry
+        this.applySymmetry(x, y, (sx, sy) => {
+            if (sx >= 0 && sy >= 0 && sx < this.canvas.width && sy < this.canvas.height) {
+                layer.ctx.clearRect(sx, sy, 1, 1);
+            }
+        });
         
         this.composeLayers();
         this.updatePreview();
@@ -3293,6 +3329,39 @@ class PixelEditor {
                 this.ctx.drawImage(layer.canvas, 0, 0);
             }
         }
+        
+        // Draw symmetry guides
+        this.drawSymmetryGuides();
+    }
+
+    drawSymmetryGuides() {
+        if (this.symmetryMode === 'off') return;
+        
+        this.ctx.save();
+        this.ctx.strokeStyle = '#2563eb';
+        this.ctx.lineWidth = 1;
+        this.ctx.setLineDash([2, 2]);
+        
+        const centerX = Math.floor(this.canvas.width / 2);
+        const centerY = Math.floor(this.canvas.height / 2);
+        
+        if (this.symmetryMode === 'horizontal' || this.symmetryMode === 'both') {
+            // Vertical line at center
+            this.ctx.beginPath();
+            this.ctx.moveTo(centerX + 0.5, 0);
+            this.ctx.lineTo(centerX + 0.5, this.canvas.height);
+            this.ctx.stroke();
+        }
+        
+        if (this.symmetryMode === 'vertical' || this.symmetryMode === 'both') {
+            // Horizontal line at center
+            this.ctx.beginPath();
+            this.ctx.moveTo(0, centerY + 0.5);
+            this.ctx.lineTo(this.canvas.width, centerY + 0.5);
+            this.ctx.stroke();
+        }
+        
+        this.ctx.restore();
     }
 
     updatePreview() {
@@ -3508,6 +3577,18 @@ class PixelEditor {
         } else if (e.ctrlKey && e.key === 'y') {
             e.preventDefault();
             this.redo();
+        }
+        
+        // Resize (Ctrl+Shift+I)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+            this.openResizeModal();
+        }
+        
+        // Symmetry toggle (Y key)
+        if (e.key.toLowerCase() === 'y' && !e.ctrlKey) {
+            e.preventDefault();
+            this.toggleSymmetryControls();
         }
         
         // Tool shortcuts
@@ -3954,18 +4035,199 @@ class PixelEditor {
         console.log('✂️ Cut lasso content');
     }
 
+    // Symmetry functions
+    toggleSymmetryControls() {
+        const isVisible = this.symmetryControlsSection.style.display !== 'none';
+        this.symmetryControlsSection.style.display = isVisible ? 'none' : 'flex';
+        this.symmetryBtn.classList.toggle('active', !isVisible);
+    }
+
+    setSymmetryMode(mode) {
+        this.symmetryMode = mode;
+        
+        // Update button states
+        this.symmetryHBtn.classList.toggle('btn-primary', mode === 'horizontal');
+        this.symmetryHBtn.classList.toggle('btn-secondary', mode !== 'horizontal');
+        
+        this.symmetryVBtn.classList.toggle('btn-primary', mode === 'vertical');
+        this.symmetryVBtn.classList.toggle('btn-secondary', mode !== 'vertical');
+        
+        this.symmetryBothBtn.classList.toggle('btn-primary', mode === 'both');
+        this.symmetryBothBtn.classList.toggle('btn-secondary', mode !== 'both');
+        
+        // Update main button
+        this.symmetryBtn.classList.toggle('active', mode !== 'off');
+        
+        // Hide controls if mode is off
+        if (mode === 'off') {
+            this.symmetryControlsSection.style.display = 'none';
+        }
+        
+        // Redraw to show/hide symmetry guides
+        this.composeLayers();
+        
+        console.log(`🔄 Symmetry mode: ${mode}`);
+    }
+
+    applySymmetry(x, y, callback) {
+        if (this.symmetryMode === 'off') return;
+        
+        const centerX = Math.floor(this.canvas.width / 2);
+        const centerY = Math.floor(this.canvas.height / 2);
+        
+        if (this.symmetryMode === 'horizontal' || this.symmetryMode === 'both') {
+            // Mirror horizontally
+            const mirrorX = centerX - (x - centerX) - 1;
+            callback(mirrorX, y);
+        }
+        
+        if (this.symmetryMode === 'vertical' || this.symmetryMode === 'both') {
+            // Mirror vertically
+            const mirrorY = centerY - (y - centerY) - 1;
+            callback(x, mirrorY);
+        }
+        
+        if (this.symmetryMode === 'both') {
+            // Mirror both (diagonal)
+            const mirrorX = centerX - (x - centerX) - 1;
+            const mirrorY = centerY - (y - centerY) - 1;
+            callback(mirrorX, mirrorY);
+        }
+    }
+
     close() {
         this.modal.classList.remove('active');
         this.layers = [];
         this.history = [];
         this.historyIndex = -1;
     }
+
+    openResizeModal() {
+        const modal = document.getElementById('resizeImageModal');
+        const currentWidth = this.canvas.width;
+        const currentHeight = this.canvas.height;
+        
+        document.getElementById('currentSizeDisplay').textContent = `${currentWidth} x ${currentHeight}`;
+        document.getElementById('newWidthInput').value = currentWidth;
+        document.getElementById('newHeightInput').value = currentHeight;
+        
+        modal.classList.add('active');
+        
+        // Setup event listeners (only once)
+        if (!modal.hasAttribute('data-initialized')) {
+            modal.setAttribute('data-initialized', 'true');
+            
+            const maintainAspectRatio = document.getElementById('maintainAspectRatio');
+            const widthInput = document.getElementById('newWidthInput');
+            const heightInput = document.getElementById('newHeightInput');
+            
+            // Aspect ratio handling
+            let aspectRatio = currentWidth / currentHeight;
+            
+            widthInput.addEventListener('input', () => {
+                if (maintainAspectRatio.checked) {
+                    const newWidth = parseInt(widthInput.value) || 1;
+                    heightInput.value = Math.round(newWidth / aspectRatio);
+                }
+            });
+            
+            heightInput.addEventListener('input', () => {
+                if (maintainAspectRatio.checked) {
+                    const newHeight = parseInt(heightInput.value) || 1;
+                    widthInput.value = Math.round(newHeight * aspectRatio);
+                }
+            });
+            
+            // Apply button
+            document.getElementById('applyResizeBtn').addEventListener('click', () => {
+                this.applyResize();
+            });
+            
+            // Cancel button
+            document.getElementById('cancelResizeBtn').addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+    }
+
+    applyResize() {
+        const newWidth = parseInt(document.getElementById('newWidthInput').value);
+        const newHeight = parseInt(document.getElementById('newHeightInput').value);
+        const method = document.getElementById('resizeMethodSelect').value;
+        
+        if (!newWidth || !newHeight || newWidth < 1 || newHeight < 1) {
+            alert('Invalid dimensions');
+            return;
+        }
+        
+        // Create temp canvas with current content
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = this.canvas.width;
+        tempCanvas.height = this.canvas.height;
+        const tempCtx = tempCanvas.getContext('2d', { alpha: true, willReadFrequently: true });
+        tempCtx.imageSmoothingEnabled = false;
+        
+        // Composite all layers
+        for (const layer of this.layers) {
+            if (layer.visible) {
+                tempCtx.drawImage(layer.canvas, 0, 0);
+            }
+        }
+        
+        // Resize main canvas
+        this.canvas.width = newWidth;
+        this.canvas.height = newHeight;
+        this.tempCanvas.width = newWidth;
+        this.tempCanvas.height = newHeight;
+        this.previewCanvas.width = newWidth;
+        this.previewCanvas.height = newHeight;
+        
+        // Set scaling method
+        const useSmooth = method === 'smooth';
+        this.ctx.imageSmoothingEnabled = useSmooth;
+        
+        // Draw resized image
+        this.ctx.drawImage(tempCanvas, 0, 0, newWidth, newHeight);
+        
+        // Reset smoothing
+        this.ctx.imageSmoothingEnabled = false;
+        
+        // Update layers
+        for (const layer of this.layers) {
+            const oldCanvas = layer.canvas;
+            layer.canvas = document.createElement('canvas');
+            layer.canvas.width = newWidth;
+            layer.canvas.height = newHeight;
+            layer.ctx = layer.canvas.getContext('2d', { alpha: true, willReadFrequently: true });
+            layer.ctx.imageSmoothingEnabled = useSmooth;
+            layer.ctx.drawImage(oldCanvas, 0, 0, newWidth, newHeight);
+            layer.ctx.imageSmoothingEnabled = false;
+        }
+        
+        // Update image data
+        this.imageData.width = newWidth;
+        this.imageData.height = newHeight;
+        
+        // Update UI
+        document.getElementById('editorDimensions').textContent = `${newWidth}x${newHeight}`;
+        this.composeLayers();
+        this.updatePreview();
+        this.renderLayers();
+        this.updateCanvasBackground();
+        this.saveHistory();
+        
+        // Close modal
+        document.getElementById('resizeImageModal').classList.remove('active');
+        
+        alert(`✅ Image resized to ${newWidth}x${newHeight}`);
+    }
 }
 
 // ===== Level Manager =====
 class LevelManager {
-    constructor(pixelArtManager) {
+    constructor(pixelArtManager, uiController) {
         this.manager = pixelArtManager;
+        this.ui = uiController;
         this.levels = [];
         this.currentLevel = null;
         this.sortColumn = null;
@@ -4086,48 +4348,99 @@ class LevelManager {
     }
 
     parseCSV(text) {
-        const lines = text.split('\n').filter(l => l.trim());
         const levels = [];
         
-        // Parse header to find column indices
-        let headerLine = lines[0];
-        const hasHeader = headerLine.toLowerCase().includes('level') || 
-                         headerLine.toLowerCase().includes('tên');
+        // Better CSV parser that handles quoted values with commas and newlines
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current.trim());
+            return result;
+        }
+        
+        // Split by lines but handle multiline quoted strings
+        const rows = [];
+        let currentRow = '';
+        let inQuotes = false;
+        
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            
+            if (char === '"') {
+                inQuotes = !inQuotes;
+                currentRow += char;
+            } else if (char === '\n' && !inQuotes) {
+                if (currentRow.trim()) {
+                    rows.push(currentRow);
+                }
+                currentRow = '';
+            } else {
+                currentRow += char;
+            }
+        }
+        if (currentRow.trim()) {
+            rows.push(currentRow);
+        }
+        
+        // Check for header
+        const hasHeader = rows[0] && (rows[0].toLowerCase().includes('level') || 
+                         rows[0].toLowerCase().includes('tên'));
         
         const startIndex = hasHeader ? 1 : 0;
         
-        for (let i = startIndex; i < lines.length; i++) {
-            // Split but preserve empty values
-            const parts = lines[i].split(',');
+        for (let i = startIndex; i < rows.length; i++) {
+            const parts = parseCSVLine(rows[i]);
             
-            // Trim each part but keep track of empty columns
-            const trimmedParts = parts.map(p => p ? p.trim() : '');
+            // Must have at least level number
+            if (parts.length < 2) continue;
             
-            if (trimmedParts.length >= 2) {
-                // Column mapping theo hình:
-                // A=0: Tên Level (Level number)
-                // B=1: Độ Khó Level (Level difficulty)
-                // C-G=2-6: BỎ QUA
-                // H=7: Số lượng màu (Colors)
-                // I=8: Số lượng Pixel (Size)
-                // J=9: tranh (Preview image path/name)
-                // K=10: Độ khó của tranh (Image difficulty)
-                // L-N=11-13: BỎ QUA
-                
-                const level = {
-                    level: parseInt(trimmedParts[0]) || levels.length + 1, // Column A
-                    difficulty: trimmedParts[1] || 'easy', // Column B
-                    colors: parseInt(trimmedParts[7]) || 0, // Column H
-                    size: trimmedParts[8] || '', // Column I
-                    imageDifficulty: trimmedParts[10] || '', // Column K
-                    assignedImage: null,
-                    status: 'empty'
-                };
-                
-                levels.push(level);
-            }
+            // Parse level number from column A (index 0)
+            const levelNum = parseInt(parts[0]);
+            if (isNaN(levelNum) || levelNum <= 0) continue;
+            
+            // Parse difficulty from column B (index 1)
+            const difficulty = parts[1];
+            if (!difficulty || difficulty === '-') continue;
+            
+            // Column mapping:
+            // A=0: Level number
+            // B=1: Difficulty
+            // C=2: Reward (skip)
+            // D-G=3-6: Other info (skip)
+            // H=7: Colors count
+            // I=8: Size (WxH)
+            // J=9: Image name (skip)
+            // K=10: Image difficulty
+            // L onwards: Skip
+            
+            const level = {
+                level: levelNum,
+                difficulty: difficulty,
+                colors: parseInt(parts[7]) || 0,
+                size: parts[8] || '',
+                imageDifficulty: parts[10] || '',
+                assignedImage: null,
+                status: 'empty'
+            };
+            
+            levels.push(level);
         }
         
+        console.log(`✅ Parsed ${levels.length} valid levels from CSV`);
         return levels;
     }
 
@@ -4571,6 +4884,8 @@ class LevelManager {
 
     saveToStorage() {
         localStorage.setItem('pixelVoxelLevels', JSON.stringify(this.levels));
+        // Also save to file automatically
+        this.autoSaveToFile();
     }
 
     loadFromStorage() {
@@ -4580,13 +4895,232 @@ class LevelManager {
             this.renderLevelTable();
         }
     }
+
+    // Export assignment data to JSON file
+    exportToFile() {
+        const data = {
+            exportDate: new Date().toISOString(),
+            levels: this.levels,
+            totalLevels: this.levels.length,
+            assignedCount: this.levels.filter(l => l.assignedImage).length
+        };
+        
+        const jsonStr = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `level-assignments-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        alert('✅ Assignment data exported successfully!');
+    }
+
+    // Import assignment data from JSON file
+    importFromFile() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const data = JSON.parse(event.target.result);
+                    
+                    if (data.levels && Array.isArray(data.levels)) {
+                        this.levels = data.levels;
+                        this.saveToStorage();
+                        this.renderLevelTable();
+                        alert(`✅ Imported ${data.levels.length} levels (${data.assignedCount || 0} assigned)`);
+                    } else {
+                        alert('❌ Invalid file format');
+                    }
+                } catch (error) {
+                    alert('❌ Error reading file: ' + error.message);
+                }
+            };
+            reader.readAsText(file);
+        };
+        
+        input.click();
+    }
+
+    // Auto-save to file using server API
+    async autoSaveToFile() {
+        try {
+            const data = {
+                exportDate: new Date().toISOString(),
+                levels: this.levels,
+                totalLevels: this.levels.length,
+                assignedCount: this.levels.filter(l => l.assignedImage).length
+            };
+            
+            const response = await fetch('/api/save-assignment-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            if (result.success) {
+                console.log('💾 Assignment data auto-saved to:', result.filePath);
+            }
+        } catch (error) {
+            console.error('Auto-save failed:', error);
+        }
+    }
+
+    async batchRenameFiles() {
+        // Get all levels with assigned images
+        const assignedLevels = this.levels.filter(l => l.assignedImage);
+        
+        if (assignedLevels.length === 0) {
+            alert('No levels have assigned images to rename.');
+            return;
+        }
+        
+        // Fetch actual file list from server
+        let serverImages = [];
+        try {
+            const response = await fetch('/api/images');
+            const data = await response.json();
+            if (data.success) {
+                serverImages = data.images;
+            }
+        } catch (error) {
+            console.error('Error fetching server images:', error);
+        }
+        
+        // Prepare rename list using actual server filenames
+        const renameList = assignedLevels.map(level => {
+            const img = this.manager.images.find(i => i.id === level.assignedImage);
+            if (!img) return null;
+            
+            // Try to find actual filename from server
+            let actualName = img.name;
+            if (serverImages.length > 0) {
+                const serverImg = serverImages.find(si => 
+                    si.name.replace('.png', '') === img.name.replace('.png', '') ||
+                    si.name === img.name
+                );
+                if (serverImg) {
+                    actualName = serverImg.name;
+                }
+            }
+            
+            const newName = `Paint_Lv${level.level}.png`;
+            
+            // Skip if already renamed
+            if (actualName === newName) return null;
+            
+            // Skip if already in Paint_Lv format
+            if (actualName.startsWith('Paint_Lv') && actualName.endsWith('.png')) return null;
+            
+            return {
+                level: level.level,
+                oldName: actualName,
+                newName: newName,
+                folder: img.folder,
+                imageId: img.id
+            };
+        }).filter(item => item !== null);
+        
+        if (renameList.length === 0) {
+            alert('All assigned images are already renamed to Paint_LvXX format.');
+            return;
+        }
+        
+        // Show confirmation dialog
+        const confirmMessage = `Rename ${renameList.length} file(s)?\n\nExamples:\n${renameList.slice(0, 5).map(r => `${r.oldName} → ${r.newName}`).join('\n')}${renameList.length > 5 ? '\n...' : ''}`;
+        
+        if (!confirm(confirmMessage)) {
+            return;
+        }
+        
+        // Perform batch rename (copy → delete old)
+        let successCount = 0;
+        let errorCount = 0;
+        const errors = [];
+        
+        for (const item of renameList) {
+            try {
+                // Step 1: Copy file to new name
+                const copyResponse = await fetch('/api/copy-image', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        sourceFilename: item.oldName,
+                        destFilename: item.newName,
+                        folder: item.folder
+                    })
+                });
+                
+                const copyResult = await copyResponse.json();
+                
+                if (copyResult.success) {
+                    // Step 2: Delete old file
+                    const deleteResponse = await fetch('/api/delete-image', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            filename: item.oldName,
+                            folder: item.folder
+                        })
+                    });
+                    
+                    const deleteResult = await deleteResponse.json();
+                    
+                    if (deleteResult.success) {
+                        // Step 3: Update image name in manager
+                        const img = this.manager.images.find(i => i.id === item.imageId);
+                        if (img) {
+                            img.name = item.newName;
+                        }
+                        successCount++;
+                    } else {
+                        errorCount++;
+                        errors.push(`${item.oldName}: Failed to delete old file - ${deleteResult.message}`);
+                    }
+                } else {
+                    errorCount++;
+                    errors.push(`${item.oldName}: ${copyResult.message}`);
+                }
+            } catch (error) {
+                errorCount++;
+                errors.push(`${item.oldName}: ${error.message}`);
+            }
+        }
+        
+        // Save updated image data to localStorage
+        this.manager.saveToStorage();
+        
+        // Show results
+        let resultMessage = `✅ Successfully renamed: ${successCount} file(s)`;
+        if (errorCount > 0) {
+            resultMessage += `\n❌ Failed: ${errorCount} file(s)\n\n${errors.slice(0, 5).join('\n')}${errors.length > 5 ? '\n...' : ''}`;
+        }
+        
+        alert(resultMessage);
+        
+        // Refresh display
+        ui.renderGallery();
+        this.renderLevelTable();
+    }
 }
 
 // ===== Initialize App =====
 const manager = new PixelArtManager();
 const ui = new UIController(manager);
-const levelManager = new LevelManager(manager);
+const levelManager = new LevelManager(manager, ui);
 window.ui = ui; // Make accessible for pixel editor
 window.levelManager = levelManager; // Make accessible for level actions
+window.manager = manager; // Make accessible for level actions
 
 console.log('PixelVoxel initialized! 🎨');

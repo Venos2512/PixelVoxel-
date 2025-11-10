@@ -1,0 +1,1807 @@
+{
+  "exportDate": "2025-11-10T15:14:21.899Z",
+  "levels": [
+    {
+      "level": 1,
+      "difficulty": "tutorial",
+      "colors": 2,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782805688.14,
+      "status": "empty"
+    },
+    {
+      "level": 2,
+      "difficulty": "easy",
+      "colors": 2,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782806091.5317,
+      "status": "empty"
+    },
+    {
+      "level": 3,
+      "difficulty": "easy",
+      "colors": 3,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782806619.8352,
+      "status": "empty"
+    },
+    {
+      "level": 4,
+      "difficulty": "easy",
+      "colors": 3,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782806979.686,
+      "status": "empty"
+    },
+    {
+      "level": 5,
+      "difficulty": "easy",
+      "colors": 3,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782807377.6794,
+      "status": "empty"
+    },
+    {
+      "level": 6,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807738.0566,
+      "status": "empty"
+    },
+    {
+      "level": 7,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782808184.613,
+      "status": "empty"
+    },
+    {
+      "level": 8,
+      "difficulty": "Surprise Shooter",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782808243.7854,
+      "status": "empty"
+    },
+    {
+      "level": 9,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782808273.5554,
+      "status": "empty"
+    },
+    {
+      "level": 10,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782805721.8945,
+      "status": "empty"
+    },
+    {
+      "level": 11,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782805753.116,
+      "status": "empty"
+    },
+    {
+      "level": 12,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782805787.497,
+      "status": "empty"
+    },
+    {
+      "level": 13,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782805859.7205,
+      "status": "empty"
+    },
+    {
+      "level": 14,
+      "difficulty": "Connected",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782805889.862,
+      "status": "empty"
+    },
+    {
+      "level": 15,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782805922.6614,
+      "status": "empty"
+    },
+    {
+      "level": 16,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782805955.5837,
+      "status": "empty"
+    },
+    {
+      "level": 17,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782805991.2078,
+      "status": "empty"
+    },
+    {
+      "level": 18,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x30",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782806022.4446,
+      "status": "empty"
+    },
+    {
+      "level": 19,
+      "difficulty": "Medium_mix",
+      "colors": 7,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806055.262,
+      "status": "empty"
+    },
+    {
+      "level": 20,
+      "difficulty": "easy",
+      "colors": 8,
+      "size": "30x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806135.2114,
+      "status": "empty"
+    },
+    {
+      "level": 21,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806169.674,
+      "status": "empty"
+    },
+    {
+      "level": 22,
+      "difficulty": "Medium",
+      "colors": 9,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806248.7883,
+      "status": "empty"
+    },
+    {
+      "level": 23,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806291.296,
+      "status": "empty"
+    },
+    {
+      "level": 24,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806335.9407,
+      "status": "empty"
+    },
+    {
+      "level": 25,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806372.532,
+      "status": "empty"
+    },
+    {
+      "level": 26,
+      "difficulty": "Medium",
+      "colors": 7,
+      "size": "25x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806409.0923,
+      "status": "empty"
+    },
+    {
+      "level": 27,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806443.5464,
+      "status": "empty"
+    },
+    {
+      "level": 28,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806478.0625,
+      "status": "empty"
+    },
+    {
+      "level": 29,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782806585.0293,
+      "status": "empty"
+    },
+    {
+      "level": 30,
+      "difficulty": "Blocks",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806652.214,
+      "status": "empty"
+    },
+    {
+      "level": 31,
+      "difficulty": "easy",
+      "colors": 8,
+      "size": "20x20",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806710.4668,
+      "status": "empty"
+    },
+    {
+      "level": 32,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806737.164,
+      "status": "empty"
+    },
+    {
+      "level": 33,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "20x20",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806767.7214,
+      "status": "empty"
+    },
+    {
+      "level": 34,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806792.875,
+      "status": "empty"
+    },
+    {
+      "level": 35,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806818.9932,
+      "status": "empty"
+    },
+    {
+      "level": 36,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782806844.0547,
+      "status": "empty"
+    },
+    {
+      "level": 37,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782806874.9314,
+      "status": "empty"
+    },
+    {
+      "level": 38,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "25x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806907.5803,
+      "status": "empty"
+    },
+    {
+      "level": 39,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "30x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782806944.1765,
+      "status": "empty"
+    },
+    {
+      "level": 40,
+      "difficulty": "Lock",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807044.666,
+      "status": "empty"
+    },
+    {
+      "level": 41,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807076.9773,
+      "status": "empty"
+    },
+    {
+      "level": 42,
+      "difficulty": "Medium",
+      "colors": 9,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807110.9175,
+      "status": "empty"
+    },
+    {
+      "level": 43,
+      "difficulty": "Medium",
+      "colors": 7,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807135.3745,
+      "status": "empty"
+    },
+    {
+      "level": 44,
+      "difficulty": "Hard",
+      "colors": 10,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807162.1821,
+      "status": "empty"
+    },
+    {
+      "level": 45,
+      "difficulty": "VeryHard",
+      "colors": 8,
+      "size": "25x25",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782807189.5198,
+      "status": "empty"
+    },
+    {
+      "level": 46,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807216.3281,
+      "status": "empty"
+    },
+    {
+      "level": 47,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807244.33,
+      "status": "empty"
+    },
+    {
+      "level": 48,
+      "difficulty": "easy",
+      "colors": 3,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807275.4456,
+      "status": "empty"
+    },
+    {
+      "level": 49,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "25x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782807305.1943,
+      "status": "empty"
+    },
+    {
+      "level": 50,
+      "difficulty": "easy",
+      "colors": 7,
+      "size": "25x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807410.8638,
+      "status": "empty"
+    },
+    {
+      "level": 51,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807443.2468,
+      "status": "empty"
+    },
+    {
+      "level": 52,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782807476.1406,
+      "status": "empty"
+    },
+    {
+      "level": 53,
+      "difficulty": "Hard",
+      "colors": 5,
+      "size": "25x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807505.534,
+      "status": "empty"
+    },
+    {
+      "level": 54,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "25x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782807534.386,
+      "status": "empty"
+    },
+    {
+      "level": 55,
+      "difficulty": "Gate",
+      "colors": 6,
+      "size": "25x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807564.504,
+      "status": "empty"
+    },
+    {
+      "level": 56,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "30x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807590.822,
+      "status": "empty"
+    },
+    {
+      "level": 57,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807618.669,
+      "status": "empty"
+    },
+    {
+      "level": 58,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807645.5176,
+      "status": "empty"
+    },
+    {
+      "level": 59,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807700.4775,
+      "status": "empty"
+    },
+    {
+      "level": 60,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807767.782,
+      "status": "empty"
+    },
+    {
+      "level": 61,
+      "difficulty": "Medium",
+      "colors": 8,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782807861.9817,
+      "status": "empty"
+    },
+    {
+      "level": 62,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807904.8037,
+      "status": "empty"
+    },
+    {
+      "level": 63,
+      "difficulty": "Hard",
+      "colors": 8,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782807937.6294,
+      "status": "empty"
+    },
+    {
+      "level": 64,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782807976.8506,
+      "status": "empty"
+    },
+    {
+      "level": 65,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782808011.9512,
+      "status": "empty"
+    },
+    {
+      "level": 66,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782808037.5461,
+      "status": "empty"
+    },
+    {
+      "level": 67,
+      "difficulty": "easy",
+      "colors": 6,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782808064.1216,
+      "status": "empty"
+    },
+    {
+      "level": 68,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "25x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782808125.1047,
+      "status": "empty"
+    },
+    {
+      "level": 69,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782808151.6995,
+      "status": "empty"
+    },
+    {
+      "level": 70,
+      "difficulty": "Pipe",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782808211.6016,
+      "status": "empty"
+    },
+    {
+      "level": 71,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782793443.2996,
+      "status": "empty"
+    },
+    {
+      "level": 72,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782802220.601,
+      "status": "empty"
+    },
+    {
+      "level": 73,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "khó",
+      "assignedImage": 1762782796138.7632,
+      "status": "empty"
+    },
+    {
+      "level": 74,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 75,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "rất khó",
+      "assignedImage": 1762782800837.9238,
+      "status": "empty"
+    },
+    {
+      "level": 76,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 77,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782796397.9077,
+      "status": "empty"
+    },
+    {
+      "level": 78,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782801293.128,
+      "status": "empty"
+    },
+    {
+      "level": 79,
+      "difficulty": "Hard",
+      "colors": 5,
+      "size": "25x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782795281.409,
+      "status": "empty"
+    },
+    {
+      "level": 80,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 81,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 82,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782795044.517,
+      "status": "empty"
+    },
+    {
+      "level": 83,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782804947.8037,
+      "status": "empty"
+    },
+    {
+      "level": 84,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "25x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782794955.8782,
+      "status": "empty"
+    },
+    {
+      "level": 85,
+      "difficulty": "Tính năng tranh mới thay cho Surprise Pixel",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 86,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782805003.1406,
+      "status": "empty"
+    },
+    {
+      "level": 87,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 88,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782799149.164,
+      "status": "empty"
+    },
+    {
+      "level": 89,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782793639.248,
+      "status": "empty"
+    },
+    {
+      "level": 90,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782796592.674,
+      "status": "empty"
+    },
+    {
+      "level": 91,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782797473.5754,
+      "status": "empty"
+    },
+    {
+      "level": 92,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782794194.567,
+      "status": "empty"
+    },
+    {
+      "level": 93,
+      "difficulty": "Hard",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782799248.6626,
+      "status": "empty"
+    },
+    {
+      "level": 94,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 95,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782797282.0508,
+      "status": "empty"
+    },
+    {
+      "level": 96,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782793411.2917,
+      "status": "empty"
+    },
+    {
+      "level": 97,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 98,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782793989.9004,
+      "status": "empty"
+    },
+    {
+      "level": 99,
+      "difficulty": "VeryHard",
+      "colors": 8,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782801013.5427,
+      "status": "empty"
+    },
+    {
+      "level": 100,
+      "difficulty": "Tính năng mới thay cho Snake",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782803679.447,
+      "status": "empty"
+    },
+    {
+      "level": 101,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 102,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782793667.7214,
+      "status": "empty"
+    },
+    {
+      "level": 103,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782799605.857,
+      "status": "empty"
+    },
+    {
+      "level": 104,
+      "difficulty": "Hard",
+      "colors": 5,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782795682.6904,
+      "status": "empty"
+    },
+    {
+      "level": 105,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 106,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782802021.9824,
+      "status": "empty"
+    },
+    {
+      "level": 107,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 108,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x30",
+      "imageDifficulty": "thường",
+      "assignedImage": 1762782794655.1807,
+      "status": "empty"
+    },
+    {
+      "level": 109,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 110,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782797199.7712,
+      "status": "empty"
+    },
+    {
+      "level": 111,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782793645.7366,
+      "status": "empty"
+    },
+    {
+      "level": 112,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "20x25",
+      "imageDifficulty": "thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 113,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": 1762782794038.6824,
+      "status": "empty"
+    },
+    {
+      "level": 114,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": 1762782796614.8716,
+      "status": "empty"
+    },
+    {
+      "level": 115,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 116,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782797643.2964,
+      "status": "empty"
+    },
+    {
+      "level": 117,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "20x25",
+      "imageDifficulty": "thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 118,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 119,
+      "difficulty": "VeryHard",
+      "colors": 9,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": 1762782795626.9924,
+      "status": "empty"
+    },
+    {
+      "level": 120,
+      "difficulty": "Wall",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 121,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 122,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 123,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 124,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 125,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 126,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 127,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 128,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 129,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 130,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 131,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 132,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 133,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 134,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 135,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 136,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 137,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 138,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 139,
+      "difficulty": "VeryHard",
+      "colors": 9,
+      "size": "25x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 140,
+      "difficulty": "Egg",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 141,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 142,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 143,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 144,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 145,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 146,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 147,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 148,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 149,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 150,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 151,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 152,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x30",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 153,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 154,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 155,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 156,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 157,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 158,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 159,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 160,
+      "difficulty": "Surprise Tower",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 161,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 162,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 163,
+      "difficulty": "Hard",
+      "colors": 5,
+      "size": "30x30",
+      "imageDifficulty": "Khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 164,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 165,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 166,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 167,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "20x20",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 168,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "Thường",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 169,
+      "difficulty": "VeryHard",
+      "colors": 9,
+      "size": "30x30",
+      "imageDifficulty": "Rất khó",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 170,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "dễ",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 171,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 172,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 173,
+      "difficulty": "Medium",
+      "colors": 6,
+      "size": "25x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 174,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 175,
+      "difficulty": "Tính năng mới",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 176,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 177,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 178,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 179,
+      "difficulty": "Hard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 180,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 181,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 182,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 183,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 184,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 185,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 186,
+      "difficulty": "VeryHard",
+      "colors": 7,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 187,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 188,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 189,
+      "difficulty": "VeryHard",
+      "colors": 9,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 190,
+      "difficulty": "Tính năng mới",
+      "colors": 4,
+      "size": "20x20",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 191,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 192,
+      "difficulty": "easy",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 193,
+      "difficulty": "Hard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 194,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 195,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 196,
+      "difficulty": "VeryHard",
+      "colors": 6,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 197,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 198,
+      "difficulty": "Medium",
+      "colors": 5,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 199,
+      "difficulty": "VeryHard",
+      "colors": 8,
+      "size": "30x30",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    },
+    {
+      "level": 200,
+      "difficulty": "easy",
+      "colors": 4,
+      "size": "25x25",
+      "imageDifficulty": "",
+      "assignedImage": null,
+      "status": "empty"
+    }
+  ],
+  "totalLevels": 200,
+  "assignedCount": 103
+}

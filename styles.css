@@ -1317,6 +1317,19 @@ button {
     margin-top: 8px;
 }
 
+.symmetry-controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 6px;
+    border-top: 1px solid #3a3a3a;
+    margin-top: 8px;
+}
+
+.symmetry-controls-section .btn-primary {
+    background: #2563eb !important;
+}
+
 .btn-warning {
     background: #ff8c00 !important;
     color: #fff !important;
@@ -2424,6 +2437,8 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .level-header h2 {
@@ -2435,6 +2450,16 @@ button {
 .level-stats {
     display: flex;
     gap: 24px;
+}
+
+.level-actions-header {
+    display: flex;
+    gap: 8px;
+}
+
+.level-actions-header button {
+    font-size: 13px;
+    padding: 8px 16px;
 }
 
 .stat-item {
@@ -2750,6 +2775,59 @@ button {
     color: #666;
     text-align: center;
     margin-top: 2px;
+}
+
+/* ===== Resize Image Modal ===== */
+.resize-options {
+    padding: 20px 0;
+}
+
+.resize-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.resize-row label {
+    min-width: 140px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.resize-row input[type="number"] {
+    flex: 1;
+    padding: 8px 12px;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.resize-row input[type="number"]:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.resize-row select {
+    flex: 1;
+    padding: 8px 12px;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.resize-row input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+#currentSizeDisplay {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 /* ===== Scrollbar Styling ===== */

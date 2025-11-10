@@ -326,6 +326,196 @@ app.get('/api/folders', (req, res) => {
     }
 });
 
+// API to rename file
+app.post('/api/rename-image', (req, res) => {
+    try {
+        const { oldFilename, newFilename, folder } = req.body;
+        
+        if (!oldFilename || !newFilename) {
+            return res.status(400).json({
+                success: false,
+                message: 'Missing oldFilename or newFilename'
+            });
+        }
+        
+        // Construct paths
+        let targetDir = PIXEL_ASSETS_DIR;
+        if (folder && folder !== '') {
+            targetDir = path.join(PIXEL_ASSETS_DIR, folder);
+        }
+        
+        const oldPath = path.join(targetDir, oldFilename);
+        const newPath = path.join(targetDir, newFilename);
+        
+        // Check if source exists
+        if (!fs.existsSync(oldPath)) {
+            return res.status(404).json({
+                success: false,
+                message: 'Source file not found'
+            });
+        }
+        
+        // Check if destination already exists
+        if (fs.existsSync(newPath)) {
+            return res.status(409).json({
+                success: false,
+                message: 'File with new name already exists'
+            });
+        }
+        
+        // Rename file
+        fs.renameSync(oldPath, newPath);
+        
+        console.log(`🏷️ Renamed: ${oldFilename} → ${newFilename}`);
+        
+        res.json({
+            success: true,
+            message: 'File renamed successfully',
+            oldName: oldFilename,
+            newName: newFilename
+        });
+        
+    } catch (error) {
+        console.error('Error renaming file:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// API to copy file (for safe rename)
+app.post('/api/copy-image', (req, res) => {
+    try {
+        const { sourceFilename, destFilename, folder } = req.body;
+        
+        if (!sourceFilename || !destFilename) {
+            return res.status(400).json({
+                success: false,
+                message: 'Missing sourceFilename or destFilename'
+            });
+        }
+        
+        // Construct paths
+        let targetDir = PIXEL_ASSETS_DIR;
+        if (folder && folder !== '') {
+            targetDir = path.join(PIXEL_ASSETS_DIR, folder);
+        }
+        
+        const sourcePath = path.join(targetDir, sourceFilename);
+        const destPath = path.join(targetDir, destFilename);
+        
+        // Check if source exists
+        if (!fs.existsSync(sourcePath)) {
+            return res.status(404).json({
+                success: false,
+                message: 'Source file not found'
+            });
+        }
+        
+        // Check if destination already exists
+        if (fs.existsSync(destPath)) {
+            return res.status(409).json({
+                success: false,
+                message: 'Destination file already exists'
+            });
+        }
+        
+        // Copy file
+        fs.copyFileSync(sourcePath, destPath);
+        
+        console.log(`📋 Copied: ${sourceFilename} → ${destFilename}`);
+        
+        res.json({
+            success: true,
+            message: 'File copied successfully',
+            sourceName: sourceFilename,
+            destName: destFilename
+        });
+        
+    } catch (error) {
+        console.error('Error copying file:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// API to delete file
+app.post('/api/delete-image', (req, res) => {
+    try {
+        const { filename, folder } = req.body;
+        
+        if (!filename) {
+            return res.status(400).json({
+                success: false,
+                message: 'Missing filename'
+            });
+        }
+        
+        // Construct path
+        let targetDir = PIXEL_ASSETS_DIR;
+        if (folder && folder !== '') {
+            targetDir = path.join(PIXEL_ASSETS_DIR, folder);
+        }
+        
+        const filePath = path.join(targetDir, filename);
+        
+        // Check if file exists
+        if (!fs.existsSync(filePath)) {
+            return res.status(404).json({
+                success: false,
+                message: 'File not found'
+            });
+        }
+        
+        // Delete file
+        fs.unlinkSync(filePath);
+        
+        console.log(`🗑️ Deleted: ${filename}`);
+        
+        res.json({
+            success: true,
+            message: 'File deleted successfully',
+            filename: filename
+        });
+        
+    } catch (error) {
+        console.error('Error deleting file:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// API to save assignment data to file
+app.post('/api/save-assignment-data', (req, res) => {
+    try {
+        const data = req.body;
+        
+        // Save to project root
+        const filePath = path.join(__dirname, 'level-assignments.json');
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+        
+        console.log(`💾 Assignment data saved to: level-assignments.json`);
+        
+        res.json({
+            success: true,
+            message: 'Assignment data saved',
+            filePath: 'level-assignments.json'
+        });
+        
+    } catch (error) {
+        console.error('Error saving assignment data:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`🎨 PixelVoxel Server running at http://localhost:${PORT}`);
     console.log(`📂 Scanning folder: ${PIXEL_ASSETS_DIR}`);
