@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelVoxel - Pixel Art Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Menu Bar -->
+        <div class="menu-bar">
+            <div class="menu-left">
+                <span class="app-title">🎨 PixelVoxel</span>
+                <div class="view-tabs">
+                    <button id="galleryViewTab" class="view-tab active" data-view="gallery">
+                        <span>🖼️</span> Gallery Only
+                    </button>
+                    <button id="splitViewTab" class="view-tab" data-view="split">
+                        <span>⚡</span> Split View
+                    </button>
+                    <button id="levelViewTab" class="view-tab" data-view="level">
+                        <span>📊</span> Level Only
+                    </button>
+                </div>
+            </div>
+            <div class="menu-right">
+                <button id="loadPaletteBtn" class="btn-primary">
+                    <span>🎨</span> Load Palette
+                </button>
+                <button id="importLevelDataBtn" class="btn-primary">
+                    <span>📥</span> Import Level Data
+                </button>
+                <button id="exportLevelSheetBtn" class="btn-secondary">
+                    <span>📤</span> Export Sheet
+                </button>
+                <button id="importFolderBtn" class="btn-primary">
+                    <span>📂</span> Import Folder
+                </button>
+                <button id="importBtn" class="btn-primary">
+                    <span>�</span> Import PNG
+                </button>
+                <input type="file" id="fileInput" accept="image/png" multiple hidden>
+                <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+                <input type="file" id="paletteInput" accept=".txt" hidden>
+                <input type="file" id="levelDataInput" accept=".csv,.json" hidden>
+            </div>
+        </div>
+
+        <!-- Split View Container -->
+        <div class="split-container" id="splitContainer">
+            <!-- Main Layout (Gallery) -->
+            <div class="main-layout split-left" id="galleryView">
+                <!-- Left Sidebar - File Manager -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h3>File Manager</h3>
+                    <button id="newFolderBtn" class="btn-icon" title="New Folder">➕</button>
+                </div>
+                
+                <!-- Filter Controls -->
+                <div class="filter-section">
+                    <label>Master Palette:</label>
+                    <div class="master-palette-display" id="masterPaletteDisplay">
+                        <p class="palette-hint">Load master-palette.txt to compare</p>
+                    </div>
+                    
+                    <label>Filter by Colors:</label>
+                    <div class="color-filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="2">2</button>
+                        <button class="filter-btn" data-filter="3">3</button>
+                        <button class="filter-btn" data-filter="4">4</button>
+                        <button class="filter-btn" data-filter="5">5</button>
+                        <button class="filter-btn" data-filter="6">6</button>
+                        <button class="filter-btn" data-filter="7">7</button>
+                        <button class="filter-btn" data-filter="8">8</button>
+                        <button class="filter-btn" data-filter="9">9</button>
+                        <button class="filter-btn" data-filter="10">10</button>
+                        <button class="filter-btn" data-filter="11">11</button>
+                        <button class="filter-btn" data-filter="12">12</button>
+                        <button class="filter-btn" data-filter="13">13</button>
+                        <button class="filter-btn" data-filter="14">14</button>
+                        <button class="filter-btn" data-filter="15">15</button>
+                    </div>
+                    
+                    <label>Filter by Size:</label>
+                    <div class="size-filter-buttons" id="sizeFilterButtons">
+                        <button class="size-btn active" data-size="all">All</button>
+                    </div>
+                    
+                    <label>Palette Match:</label>
+                    <div class="palette-match-buttons">
+                        <button class="match-btn active" data-match="all">All</button>
+                        <button class="match-btn" data-match="exact">Exact Match</button>
+                        <button class="match-btn" data-match="similar">Similar</button>
+                        <button class="match-btn" data-match="different">Different</button>
+                    </div>
+                    
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search...">
+                    </div>
+                </div>
+
+                <!-- Folders Tree -->
+                <div class="folders-tree" id="foldersTree">
+                    <div class="folder-item active" data-folder="root">
+                        <span class="folder-icon">📂</span>
+                        <span class="folder-name">All Images</span>
+                        <span class="folder-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center - Image Gallery -->
+            <div class="center-panel">
+                <div class="gallery-header">
+                    <div class="gallery-info">
+                        <span id="galleryTitle">All Images</span>
+                        <span id="galleryCount" class="count-badge">0 items</span>
+                        <span id="selectedCount" class="count-badge selected-badge" style="display: none;">0 selected</span>
+                    </div>
+                    <div class="multi-select-controls" id="multiSelectControls" style="display: none;">
+                        <button id="selectAllBtn" class="btn-small">Select All</button>
+                        <button id="deselectAllBtn" class="btn-small">Deselect All</button>
+                        <button id="deleteSelectedBtn" class="btn-danger btn-small">Delete Selected</button>
+                        <button id="moveSelectedBtn" class="btn-secondary btn-small">Move Selected</button>
+                    </div>
+                    <div class="view-controls">
+                        <label>Sort by:</label>
+                        <select id="sortBySelect" class="sort-select">
+                            <option value="name">Name</option>
+                            <option value="date-new">Date (Newest)</option>
+                            <option value="date-old">Date (Oldest)</option>
+                            <option value="size">Size</option>
+                            <option value="colors">Colors</option>
+                            <option value="ready">Ready to Dev</option>
+                        </select>
+                        <label style="margin-left: 16px;">View Size:</label>
+                        <input type="range" id="thumbnailSize" min="64" max="256" value="128" step="32">
+                        <span id="sizeLabel">128px</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid" id="galleryGrid">
+                    <div class="empty-state">
+                        <div class="empty-icon">🖼️</div>
+                        <p>No images yet</p>
+                        <p class="empty-hint">Click "Import PNG" to add your pixel art</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar - Preview & Info -->
+            <div class="right-panel">
+                <div class="preview-section" id="previewSection">
+                    <h3>Preview</h3>
+                    <div class="preview-empty">
+                        <p>Select an image to preview</p>
+                    </div>
+                </div>
+
+                <div class="info-section" id="infoSection" style="display: none;">
+                    <h3>Image Info</h3>
+                    <div class="info-content">
+                        <div class="info-row">
+                            <span class="info-label">Name:</span>
+                            <span class="info-value" id="infoName">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Size:</span>
+                            <span class="info-value" id="infoSize">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Colors:</span>
+                            <span class="info-value" id="infoColors">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Folder:</span>
+                            <span class="info-value" id="infoFolder">-</span>
+                        </div>
+                    </div>
+
+                    <div class="palette-preview">
+                        <h4>Color Palette</h4>
+                        <div class="palette-grid" id="paletteGrid"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="redrawBtn" class="btn-primary">Redraw</button>
+                        <button id="editColorsBtn" class="btn-secondary">Edit Colors</button>
+                        <button id="exportX1Btn" class="btn-secondary">Export x1</button>
+                        <button id="exportX10Btn" class="btn-secondary">Export x10</button>
+                        <button id="moveToFolderBtn" class="btn-secondary">Move to Folder</button>
+                        <button id="deleteBtn" class="btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Level Manager View -->
+            <div class="level-view split-right" id="levelView">
+                <div class="level-header">
+                    <h2>📊 Level Manager</h2>
+                    <div class="level-stats">
+                        <span class="stat-item">Total: <strong id="totalLevels">0</strong></span>
+                        <span class="stat-item">Assigned: <strong id="assignedLevels">0</strong></span>
+                        <span class="stat-item">Ready: <strong id="readyLevels">0</strong></span>
+                    </div>
+                </div>
+
+                <div class="level-table-container">
+                    <table class="level-table" id="levelTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px; cursor: pointer;" onclick="levelManager.sortLevels('level')">
+                                    Level <span id="sortLevel" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 120px; cursor: pointer;" onclick="levelManager.sortLevels('difficulty')">
+                                    Difficulty <span id="sortDifficulty" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 80px; cursor: pointer;" onclick="levelManager.sortLevels('colors')">
+                                    Colors <span id="sortColors" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 100px; cursor: pointer;" onclick="levelManager.sortLevels('size')">
+                                    Size <span id="sortSize" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 200px;">Preview</th>
+                                <th style="width: 200px; cursor: pointer;" onclick="levelManager.sortLevels('assigned')">
+                                    Assigned Image <span id="sortAssigned" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 120px; cursor: pointer;" onclick="levelManager.sortLevels('status')">
+                                    Status <span id="sortStatus" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 120px; cursor: pointer;" onclick="levelManager.sortLevels('imageDiff')">
+                                    Image Diff. <span id="sortImageDiff" class="sort-arrow">↕</span>
+                                </th>
+                                <th style="width: 180px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="levelTableBody">
+                            <tr class="empty-row">
+                                <td colspan="9">
+                                    <div class="empty-state">
+                                        <p>📥 Import level data (CSV/JSON) to start</p>
+                                        <p class="empty-hint">Excel: A=Level | B=Difficulty | H=Colors | I=Size | K=Image Diff (skip C-G,L-N)</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Status Bar (Aseprite-like) -->
+    <div class="status-bar">
+        <div class="status-section">
+            <span class="status-label">Image:</span>
+            <span id="statusImage">-</span>
+        </div>
+        <div class="status-section">
+            <span class="status-label">Size:</span>
+            <span id="statusSize">-</span>
+        </div>
+        <div class="status-section">
+            <span class="status-label">Colors:</span>
+            <span id="statusColors">-</span>
+        </div>
+        <div class="status-section">
+            <span class="status-label">Color:</span>
+            <span id="statusColorSwatch" class="status-color-swatch"></span>
+            <span id="statusColorName">-</span>
+            <span id="statusColorHex">-</span>
+        </div>
+        <div class="status-section">
+            <span class="status-label">Match:</span>
+            <span id="statusMatch">-</span>
+        </div>
+    </div>
+
+    <!-- Modal for New Folder -->
+    <div id="folderModal" class="modal">
+        <div class="modal-content">
+            <h3>Create New Folder</h3>
+            <input type="text" id="folderNameInput" placeholder="Folder name...">
+            <div class="modal-buttons">
+                <button id="createFolderBtn" class="btn-primary">Create</button>
+                <button id="cancelFolderBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Move to Folder -->
+    <div id="moveModal" class="modal">
+        <div class="modal-content">
+            <h3>Move to Folder</h3>
+            <div id="folderList" class="folder-list"></div>
+            <div class="modal-buttons">
+                <button id="confirmMoveBtn" class="btn-primary">Move</button>
+                <button id="cancelMoveBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Color Editor -->
+    <div id="colorEditorModal" class="modal">
+        <div class="modal-content modal-large">
+            <h3>Edit Colors</h3>
+            <div class="color-editor-container">
+                <div class="color-editor-preview">
+                    <canvas id="colorEditorCanvas" width="300" height="300"></canvas>
+                </div>
+                <div class="color-editor-palette">
+                    <h4>Current Palette</h4>
+                    <div id="colorEditorPalette" class="color-editor-grid"></div>
+                    
+                    <div class="color-replace-section">
+                        <h4>Replace Color</h4>
+                        <div class="color-replace-controls">
+                            <div class="color-replace-item">
+                                <label>From:</label>
+                                <div class="color-picker-wrapper">
+                                    <div id="replaceFromSwatch" class="color-swatch"></div>
+                                    <span id="replaceFromHex">Select color</span>
+                                </div>
+                            </div>
+                            <div class="color-replace-item">
+                                <label>To:</label>
+                                <div class="color-picker-wrapper">
+                                    <input type="color" id="replaceToColor" value="#FF0000">
+                                    <span id="replaceToHex">#FF0000</span>
+                                </div>
+                            </div>
+                            <button id="replaceColorBtn" class="btn-primary" disabled>Replace Color</button>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-replace-section">
+                        <h4>Quick Replace with Palette</h4>
+                        <div id="masterPaletteQuick" class="color-editor-grid"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="saveColorsBtn" class="btn-primary">Save & Overwrite</button>
+                <button id="cancelColorEditBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pixel Editor Modal -->
+    <div id="pixelEditorModal" class="modal">
+        <div class="modal-content modal-fullscreen">
+            <!-- Top Menu Bar -->
+            <div class="editor-menubar">
+                <div class="editor-title">
+                    <span id="editorFileName">Untitled</span>
+                    <span id="editorDimensions" class="editor-subtitle">16x16</span>
+                </div>
+                <div class="editor-menu-actions">
+                    <button id="undoBtn" class="menu-btn" title="Undo (Ctrl+Z)">
+                        <span>↶</span>
+                    </button>
+                    <button id="redoBtn" class="menu-btn" title="Redo (Ctrl+Y)">
+                        <span>↷</span>
+                    </button>
+                    <div class="menu-divider"></div>
+                    <button id="saveDrawingBtn" class="menu-btn btn-primary">💾 Save</button>
+                    <button id="cancelDrawingBtn" class="menu-btn btn-secondary">✖ Close</button>
+                </div>
+            </div>
+            
+            <div class="pixel-editor-workspace">
+                <!-- Left Toolbar (Vertical) -->
+                <div class="editor-toolbar-vertical">
+                    <div class="tool-group">
+                        <button class="tool-btn active" data-tool="pencil" title="Pencil (B)">
+                            <span>✏️</span>
+                        </button>
+                        <button class="tool-btn" data-tool="eraser" title="Eraser (E)">
+                            <span>🧹</span>
+                        </button>
+                        <button class="tool-btn" data-tool="picker" title="Eyedropper (I)">
+                            <span>💧</span>
+                        </button>
+                        <button class="tool-btn" data-tool="fill" title="Fill (G)">
+                            <span>🪣</span>
+                        </button>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                    <div class="tool-group">
+                        <button class="tool-btn" data-tool="line" title="Line (L)">
+                            <span>📏</span>
+                        </button>
+                        <button class="tool-btn" data-tool="rectangle" title="Rectangle (R)">
+                            <span>▢</span>
+                        </button>
+                        <button class="tool-btn" data-tool="circle" title="Circle (O)">
+                            <span>○</span>
+                        </button>
+                    </div>
+                    <div class="toolbar-divider"></div>
+                    <div class="tool-group">
+                        <button class="tool-btn" data-tool="lasso" title="Lasso Select (S)">
+                            <span>🔗</span>
+                        </button>
+                        <button class="tool-btn" data-tool="crop" title="Crop (C)">
+                            <span>✂️</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Crop Controls (hidden by default) -->
+                    <div id="cropControlsSection" class="crop-controls-section" style="display: none;">
+                        <div id="cropSizeDisplay" class="crop-size-display" style="font-size: 10px; color: #2563eb; font-weight: 600; text-align: center; margin-bottom: 6px;">0x0</div>
+                        <button id="applyCropBtn" class="menu-btn btn-primary" style="font-size: 10px; padding: 4px 8px;">✓ Apply</button>
+                        <button id="cancelCropBtn" class="menu-btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">✖ Cancel</button>
+                    </div>
+                    
+                    <!-- Lasso Controls (hidden by default) -->
+                    <div id="lassoControlsSection" class="lasso-controls-section" style="display: none;">
+                        <button id="moveLassoBtn" class="menu-btn btn-primary" style="font-size: 10px; padding: 4px 8px;" title="Move (M)">📦 Move</button>
+                        <button id="cutLassoBtn" class="menu-btn btn-warning" style="font-size: 10px; padding: 4px 8px;" title="Cut (X)">✂️ Cut</button>
+                        <button id="cancelLassoBtn" class="menu-btn btn-secondary" style="font-size: 10px; padding: 4px 8px;">✖ Cancel</button>
+                    </div>
+                    
+                    <div class="toolbar-spacer"></div>
+                    <div class="toolbar-color-section">
+                        <div class="color-swatch-stack">
+                            <div class="color-box primary" id="primaryColorBox" title="Primary (Left Click)"></div>
+                            <div class="color-box secondary" id="secondaryColorBox" title="Secondary (Right Click)"></div>
+                        </div>
+                        <div class="color-swap-btn" title="Swap Colors (X)">⇄</div>
+                    </div>
+                </div>
+
+                <!-- Center Area -->
+                <div class="editor-center-area">
+                    <!-- Canvas Container -->
+                    <div class="editor-canvas-section">
+                        <div class="canvas-topbar">
+                            <div class="zoom-controls">
+                                <button id="zoomOutBtn" class="icon-btn" title="Zoom Out (-)">-</button>
+                                <span id="zoomValue" class="zoom-display">16x</span>
+                                <button id="zoomInBtn" class="icon-btn" title="Zoom In (+)">+</button>
+                                <input type="range" id="canvasZoom" min="4" max="32" value="16" step="2">
+                            </div>
+                            <div class="canvas-options">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="showGridCheckbox" checked>
+                                    <span>Grid</span>
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="fillShapeCheckbox">
+                                    <span>Fill</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="canvas-viewport" id="canvasWrapper">
+                            <canvas id="pixelEditorCanvas" class="pixel-canvas"></canvas>
+                            <canvas id="tempLayerCanvas" class="pixel-canvas temp-layer"></canvas>
+                            
+                            <!-- Crop Overlay -->
+                            <div id="cropOverlay" class="crop-overlay" style="display: none;">
+                                <div class="crop-selection">
+                                    <div class="crop-handle nw"></div>
+                                    <div class="crop-handle ne"></div>
+                                    <div class="crop-handle sw"></div>
+                                    <div class="crop-handle se"></div>
+                                    <div class="crop-handle n"></div>
+                                    <div class="crop-handle s"></div>
+                                    <div class="crop-handle w"></div>
+                                    <div class="crop-handle e"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Crop Control Bar -->
+                        <div id="cropControlBar" class="crop-control-bar" style="display: none;">
+                            <span id="cropSizeDisplay" class="crop-size-text">Selection: 0x0</span>
+                            <div class="crop-buttons">
+                                <button id="applyCropBtn" class="btn-small btn-primary">✓ Apply</button>
+                                <button id="cancelCropBtn" class="btn-small btn-secondary">✖ Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Timeline/Layers -->
+                    <div class="editor-timeline-section">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Layers</span>
+                            <div class="timeline-controls">
+                                <button id="addLayerBtn" class="icon-btn" title="Add Layer">+</button>
+                                <button id="deleteLayerBtn" class="icon-btn" title="Delete Layer">-</button>
+                                <button id="moveLayerUpBtn" class="icon-btn" title="Move Up">↑</button>
+                                <button id="moveLayerDownBtn" class="icon-btn" title="Move Down">↓</button>
+                            </div>
+                        </div>
+                        <div id="layersList" class="layers-timeline"></div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="editor-right-sidebar">
+                    <!-- Preview -->
+                    <div class="sidebar-section">
+                        <div class="section-header">Preview</div>
+                        <div class="preview-container">
+                            <canvas id="previewCanvas" class="preview-canvas"></canvas>
+                        </div>
+                        <div class="preview-info">
+                            <div class="info-item">
+                                <span class="info-label">Size:</span>
+                                <span class="info-value" id="previewSize">16x16</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Total Pixels:</span>
+                                <span class="info-value" id="previewTotalPixels">256</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Colors:</span>
+                                <span class="info-value" id="previewColorCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Master Palette -->
+                    <div class="sidebar-section">
+                        <div class="section-header">Master Palette</div>
+                        <div id="editorMasterPalette" class="editor-master-palette"></div>
+                    </div>
+
+                    <!-- Current Palette -->
+                    <div class="sidebar-section">
+                        <div class="section-header">Current Colors</div>
+                        <div id="editorPaletteGrid" class="editor-current-palette"></div>
+                    </div>
+
+                    <!-- Tool Properties -->
+                    <div class="sidebar-section">
+                        <div class="section-header">Tool Options</div>
+                        <div class="tool-properties">
+                            <div class="property-row" id="brushSizeProperty" style="display: none;">
+                                <label>Brush Size:</label>
+                                <input type="range" id="brushSizeSlider" min="1" max="10" value="1">
+                                <span id="brushSizeValue">1</span>
+                            </div>
+                            <div class="property-row">
+                                <label>Opacity:</label>
+                                <input type="range" id="opacitySlider" min="0" max="100" value="100">
+                                <span id="opacityValue">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Assign Image to Level Modal -->
+    <div id="assignImageModal" class="modal">
+        <div class="modal-content modal-large">
+            <h3>Assign Image to Level <span id="assignLevelNumber"></span></h3>
+            <div class="assign-image-container">
+                <div class="assign-filter">
+                    <input type="text" id="assignSearchInput" placeholder="🔍 Search images..." class="search-input">
+                    <label>
+                        <input type="checkbox" id="assignMatchRequirementsCheck" checked>
+                        Match requirements (size & colors)
+                    </label>
+                    <label>
+                        <input type="checkbox" id="assignReadyOnlyCheck">
+                        Show only "Ready to Dev"
+                    </label>
+                </div>
+                <div class="assign-image-grid" id="assignImageGrid">
+                    <div class="empty-state">
+                        <p>No images available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="cancelAssignBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
